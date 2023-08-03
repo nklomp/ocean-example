@@ -8,7 +8,7 @@ function countLines(file) {
   const fileBuffer = fs.readFileSync(file)
   const toString = fileBuffer.toString()
   const splitLines = toString.split('\n')
-  const noLines = splitLines.length - 1
+  const noLines = splitLines.length
   fs.appendFileSync(`${outputFolder}/output.log`, `${file},${noLines}\r\n`)
   console.log(`Finished. We have ${noLines} lines in ${file}` )
 }
