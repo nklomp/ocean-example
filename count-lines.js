@@ -13,18 +13,18 @@ function countLines(file) {
   console.log(`Finished. We have ${noLines} lines in ${file}` )
 }
 
-function processfolder(folder) {
+function processFolder(folder) {
   const files = fs.readdirSync(folder)
 
   for (let i = 0; i < files.length; i++) {
     const file = files[i]
     const fullPath = `${folder}/${file}`
     if (fs.statSync(fullPath).isDirectory()) {
-      processfolder(fullPath)
+      processFolder(fullPath)
     } else {
       countLines(fullPath)
     }
   }
 }
 
-processfolder(inputFolder)
+processFolder(inputFolder)
