@@ -8,6 +8,8 @@ USER alguser
 # Copy the actual script to the /algo directory and make them only available to the alguser
 COPY --chown=alguser --chmod=700 random.sh /algo/
 
+ADD https://github.com/nklomp/ocean-example/raw/main/energyshr/dataset/energySHR-london-synthetic-10k.csv /dataset/tmp/
+
 # Set the working directory to our script dir
 WORKDIR /algo
 

@@ -1,6 +1,10 @@
 #!/bin/bash
 INPUTFILE=*.csv
-INPUTDIR=/data/inputs
+
+# Temp workaround to not fetch large dataset because of a timeout
+INPUTDIR=/dataset/tmp
+
+#INPUTDIR=/data/inputs
 INPUT="${INPUTDIR}/*/${INPUTFILE}"
 OUTPUTDIR=/data/outputs
 SAMPLEFILE=sample.csv
@@ -9,23 +13,23 @@ SAMPLESIZE=1000
 LOGDIR=/data/logs
 LOG=${LOGDIR}/output.log
 
-if [ ! -d ${LOGDIR} ] 
+if [ ! -d ${LOGDIR} ]
 then
 	echo "Log directory ${LOGDIR} does not exist."
-	exit 1 
+	exit 1
 fi
 
 
-if [ ! -d ${INPUTDIR} ] 
+if [ ! -d ${INPUTDIR} ]
 then
 	echo "Input directory ${INPUTDIR} does not exist." >> ${LOG}
-	exit 1 
+	exit 1
 fi
 
-if [ ! -d ${OUTPUTDIR} ] 
+if [ ! -d ${OUTPUTDIR} ]
 then
 	echo "Output directory ${OUTPUTDIR} does not exist." >> ${LOG}
-	exit 1 
+	exit 1
 fi
 
 
@@ -45,3 +49,5 @@ echo "Getting ${SAMPLESIZE} random samples and sorting the result..." >> ${LOG}
 tail -n +1 ${INPUT} | shuf -n ${SAMPLESIZE} | sort >> ${OUTPUTDIR}/${SAMPLEFILE}
 
 echo "${SAMPLESIZE} samples have been generated" >> ${LOG}
+
+exit 0
