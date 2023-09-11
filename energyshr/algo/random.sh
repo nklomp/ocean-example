@@ -1,4 +1,5 @@
 #!/bin/bash
+
 INPUTFILE=*.csv
 
 # Temp workaround to not fetch large dataset because of a timeout
