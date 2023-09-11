@@ -2,7 +2,7 @@
 INPUTFILE=*.csv
 
 # Temp workaround to not fetch large dataset because of a timeout
-INPUTDIR=/dataset/tmp
+INPUTDIR=/dataset
 
 #INPUTDIR=/data/inputs
 INPUT="${INPUTDIR}/*/${INPUTFILE}"
